@@ -1,0 +1,107 @@
+@layer theme, base, antd, components, utilities;
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Tajawal", system-ui, -apple-system, sans-serif;
+
+  --color-primary: #f97316;
+  --color-primary-light: #fb923c;
+  --color-primary-dark: #ea580c;
+  --color-accent: #fbbf24;
+
+  --color-dark: #0a0a0a;
+  --color-dark-secondary: #111111;
+  --color-dark-tertiary: #1a1a1a;
+  --color-dark-card: #161616;
+  --color-border: #262626;
+  --color-border-light: #333333;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply font-sans text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-full px-8 py-4 font-semibold text-white transition-all duration-300;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-primary-dark)
+    );
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@layer components {
+  .btn-secondary {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-full border border-border-light bg-transparent px-8 py-4 font-semibold text-white transition-all duration-300;
+
+    &:hover {
+      @apply border-primary bg-primary/10 text-primary;
+    }
+  }
+
+  .card {
+    @apply overflow-hidden rounded-3xl border border-border bg-dark-card transition-all duration-500;
+
+    &:hover {
+      @apply -translate-y-1 border-border-light;
+    }
+  }
+
+  .glass-card {
+    @apply rounded-3xl border border-border bg-dark-card/80 backdrop-blur-xl;
+  }
+
+  .section-label {
+    @apply mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary;
+
+    &::before {
+      content: "";
+      @apply size-1.5 animate-pulse rounded-full bg-primary;
+    }
+  }
+
+  .section-title {
+    @apply text-4xl leading-tight font-bold text-white md:text-5xl lg:text-6xl;
+  }
+
+  .section-subtitle {
+    @apply mt-4 text-lg leading-relaxed text-neutral-400;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .input-dark {
+    @apply w-full rounded-xl border border-border bg-dark-card px-5 py-4 text-white outline-none transition-all duration-300;
+
+    &:focus {
+      @apply border-primary ring-3 ring-primary/10;
+    }
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--color-border) 50%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-border) 50%, transparent) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
